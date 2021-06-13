@@ -39,3 +39,9 @@ def question_2a(N):
         return fibonacci(N-1)
     ans = 15*np.sin(15)
     return ans
+
+def question_3(N):
+    """
+    Question 3
+    """
+    return None
