@@ -29,17 +29,38 @@ def question_2a(N):
 <p class="center">1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</p>
 <p>By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.</p>
     """
-    def fibonacci(N):
-        """ 1,1,2,3,5,8,13,21,34,55,89"""
+    def iseven(value):
+        if value % 2 == 0:
+            return True
+        else:
+            return False
         
-        return N + N-1
-    if N <= 1:
-        return N
-    else:
-        return fibonacci(N-1)
-    ans = 15*np.sin(15)
-    return ans
-
+    fibonacci_list = [1,2]
+    
+    def generate_fib_value(array=fibonacci_list):
+        new_val = array[-1]+array[-2]
+        return new_val
+    
+    def populate_array(N):
+        while fibonacci_list[-1] < N:
+            fibnum = generate_fib_value(fibonacci_list)
+            if fibnum < N:
+                fibonacci_list.append(fibnum)
+            else:
+                return "Done"
+        else:
+            return "Already bigger than given value"
+        
+    def calc_sum(array):
+        sums = 0
+        for val in array:
+            if iseven(val):
+                sums += val
+        return sums
+    #print("this is the original list: {}".format(fibonacci_list))
+    populate_array(N)
+    #print("The array has been updated: {}".format(fibonacci_list))
+    print("The result of this question is: {}".format(calc_sum(fibonacci_list)))
 def question_3(N):
     """
     Question 3
