@@ -62,7 +62,37 @@ def question_2a(N):
     #print("The array has been updated: {}".format(fibonacci_list))
     print("The result of this question is: {}".format(calc_sum(fibonacci_list)))
 def question_3(N):
+    import numpy as np
+    import math
     """
-    Question 3
+    <p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+    <p>What is the largest prime factor of the number 600851475143 ?</p>
     """
-    return None
+    list_of_primes = [2,3,5]
+    
+    def is_prime(val,prime_list=list_of_primes):
+        if val % 2 == 0:
+            return False
+        else:
+            for j in prime_list:
+                if val % j == 0:
+                    return False
+        return True
+    
+    def get_all_primes_up_to_N(N,prime_list=list_of_primes):
+        if N > 5:
+            for i in range(7,N+1,2):
+                if is_prime(i):
+                    prime_list.append(i)
+                    
+    get_all_primes_up_to_N(math.floor(math.sqrt(N)))
+    
+    def get_prime_factors(N,prime_vals=list_of_primes):
+        factors = []
+        for j in prime_vals:
+            if N % j == 0:
+                factors.append(j)
+        return factors
+    
+    factors_of_N = get_prime_factors(N)
+    return factors_of_N
